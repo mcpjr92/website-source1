@@ -5,6 +5,7 @@ import Script from "next/script";
 import "./globals.css";
 // Import all available fonts for AI usage
 import "../lib/fonts";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,9 +18,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Source1 Solutions - Commercial Property Maintenance | Las Vegas, NV",
-  description: "Professional commercial property maintenance services in Las Vegas, NV. Over 15 years of experience in building facilities repairs, preventive maintenance, and inspections.",
-  keywords: "commercial property maintenance, Las Vegas, building repairs, preventive maintenance, facility inspections, Source1 Solutions",
+  title: "Source1 Solutions - Property Management Platform | Las Vegas, NV",
+  description: "Complete property management platform for clients, vendors, and managers. Submit work orders, manage vendors, and streamline property maintenance in Las Vegas, NV.",
+  keywords: "property management, work orders, vendor management, Las Vegas, building maintenance, Source1 Solutions",
 };
 
 export default function RootLayout({
@@ -35,7 +36,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   );
